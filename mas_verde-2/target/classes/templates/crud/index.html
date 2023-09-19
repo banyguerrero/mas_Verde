@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <title>Mas Verde :v</title>
+</head>
+<style>
+        body {
+            background-color: #61bd4f; 
+            color: white; 
+            font-family: Arial, sans-serif; 
+        }
+
+        .btn {
+            background-color: #61bd4f; 
+            color: white; 
+            border: none;
+            padding: 10px 20px; 
+            font-size: 18px; 
+            border-radius: 5px; 
+            transition: background-color 0.3s ease; 
+            cursor: pointer; 
+        }
+
+        .btn:hover {
+            background-color: #4ca543; 
+        }
+
+        .form-control {
+            border-color: #61bd4f; 
+            border-radius: 5px; 
+        }
+
+   
+        label {
+            font-weight: bold;
+        }
+
+        
+        h2.text-center {
+            font-size: 36px; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #61bd4f; 
+        }
+    </style>
+
+<body class="bg-light text-dark">
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <!-- Barra de navegación lateral -->
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark min-vh-100">
+                <!-- Logo -->
+                <a href="/" class="navbar-brand d-flex align-items-center py-3">
+                    <span class="fs-5 text-white">Mas Verde</span>
+                </a>
+                <!-- Menú de navegación -->
+                <ul class="nav flex-column mb-4">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-white">
+                            <i class="bi bi-house"></i> <span class="ms-2">Ventas</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link text-white">
+                            <i class="bi bi-speedometer2"></i> <span class="ms-2">Compras</span>
+                        </a>
+                        <ul class="collapse show nav flex-column ms-3" id="submenu1">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link text-secondary">Proveedores</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link text-secondary">Productos</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#submenu2" data-bs-toggle="collapse" class="nav-link text-white">
+                            <i class="bi bi-bootstrap"></i> <span class="ms-2">Pedidos y Domicilios</span>
+                        </a>
+                        <ul class="collapse nav flex-column ms-3" id="submenu2">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link text-secondary">Pedidos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link text-secondary">Domicilios</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#submenu3" data-bs-toggle="collapse" class="nav-link text-white">
+                            <i class="bi bi-grid"></i> <span class="ms-2">Usuarios</span>
+                        </a>
+                        <ul class="collapse nav flex-column ms-3" id="submenu3">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link text-secondary">Vendedores</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link text-secondary">Clientes</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link text-secondary">Domiciliarios</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link text-secondary">Administradores</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link text-white">
+                            <i class="bi bi-people"></i> <span class="ms-2">Ventas</span>
+                        </a>
+                    </li>
+                </ul>
+                <!-- Perfil de usuario -->
+                
+            </div>
+            
+            <!-- Contenido principal -->
+            <div class="col py-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="text-dark">Proveedores</h2>
+                        </div>
+                        <div class="col-12 mt-4">
+                            <!-- Botón para agregar nuevo proveedor -->
+                            <a th:href="@{/proveedores/new}" class="btn btn-success">Nuevo Proveedor</a>
+                        </div>
+                        <div class="col-12 mt-4">
+                            <!-- Tabla de proveedores -->
+                            <table class="table table-bordered text-dark">
+                                <thead class="thead-light">
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>nombre</th>
+                                        <th>nit</th>
+                                        <th>Teléfono</th>
+                                        <th>correo</th>
+                                        
+                                        <th>Acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Aquí puedes usar Thymeleaf para iterar sobre los proveedores y llenar la tabla -->
+                                    <!-- Por ejemplo: -->
+                                     <tr th:each="proveedor : ${proveedors}">
+                                        <td th:text="${proveedor.id}"></td>
+                                        <td th:text="${proveedor.nombre}"></td>
+                                        <td th:text="${proveedor.nit}"></td>
+                                        <td th:text="${proveedor.telefono}"></td>
+                                        <td th:text="${proveedor.correo}"></td>
+                                        
+                                        <td>
+                                            <a th:href="@{/proveedores/editar/}+${proveedor.id}" class="btn btn-sm btn-primary">Editar</a>
+                                            <a th:href="@{/proveedores/eliminar/}+${proveedor.id}" class="btn btn-sm btn-danger" onclick="return confirm('¿Está seguro de querer eliminar el registro?')">Borrar</a>
+                                        </td>
+                                    </tr> 
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Agrega los scripts de Bootstrap (jQuery y Popper.js) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</body>
+</html>
